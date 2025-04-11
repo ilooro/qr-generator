@@ -1,0 +1,15 @@
+accelerate launch train_controlnet.py \
+ --pretrained_model_name_or_path="stable-diffusion-v1-5/stable-diffusion-v1-5" \
+ --controlnet_model_name_or_path="latentcat/control_v1p_sd15_brightness" \
+ --output_dir="output-finetune100_brightness" \
+ --dataset_name="diffusiondb_QR_masks100k" \
+ --resolution=512 \
+ --learning_rate=1e-5 \
+ --validation_image "test/qr2.png" "test/qr2.png" \
+ --validation_prompt "A vibrant red apple on a rustic wooden table, soft natural lighting, high detail" "A majestic ancient oak tree with sprawling branches, vibrant golden autumn leaves, and intricate bark textures" \
+ --train_batch_size=16 \
+ --report_to=wandb \
+ --num_train_epochs=1 \
+ --checkpoints_total_limit=3 \
+ --checkpointing_steps=3000 \
+ --validation_steps=1000
