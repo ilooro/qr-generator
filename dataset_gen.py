@@ -42,7 +42,7 @@ class MaskGenerator():
         avg = np.mean(img_gray)
 
         mask = np.zeros((w, h, 3), np.uint8)
-        mask[:, :, :] = 255
+        mask[:, :, 2] = 255
 
         for i in range(0, w, step):
             for j in range(0, h, step):
@@ -104,5 +104,8 @@ class MaskGenerator():
 
 
 if __name__ == "__main__":
+    """
+    Пример работы
+    """
     a = MaskGenerator(61)
-    a.work_diffusiondb('./dataset/diffusiondb/2M/', './dataset/diffusiondb_QR_masks_9x9')
+    a.work_diffusiondb('./dataset/diffusiondb/2M/', './dataset/diffusiondb_QR_masks_testing')
